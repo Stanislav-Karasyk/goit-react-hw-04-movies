@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { Component } from 'react';
 
-const MoviesPage = () => {
+export default class MoviesPage extends Component {
+  state = {};
+
+  render() {
     return (
-        <div>
-            <h2>MOVIES </h2>
-        </div>
-    )
+      <div>
+        <h2>MOVIES PAGE</h2>
+      </div>
+    );
+  }
 }
-
-export default MoviesPage

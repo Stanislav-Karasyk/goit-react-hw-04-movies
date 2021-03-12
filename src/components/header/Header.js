@@ -11,8 +11,8 @@ const Header = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/movie" activeClassName="NavLinkActive">
-            Movie
+          <NavLink exact to="/movies" activeClassName="NavLinkActive">
+            Movies
           </NavLink>
         </li>
       </ul>

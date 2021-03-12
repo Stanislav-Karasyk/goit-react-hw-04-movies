@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { fetchMovies } from '../../servises/fetchApi';
+import { Link } from 'react-router-dom';
+import { getMovies } from '../../servises/fetchApi';
 
 export default class HomePage extends Component {
   state = {
@@ -7,18 +8,21 @@ export default class HomePage extends Component {
   };
 
   componentDidMount() {
-    fetchMovies().then(movies => this.setState({ movies }));
+    getMovies().then(movies => this.setState({ movies }));
   }
 
   render() {
     const { movies } = this.state;
+
     return (
       <div>
-          <h1>Trending today</h1>
+        <h1>Trending today</h1>
         <ul>
           {movies.map(movie => (
             <li key={movie.id}>
-              <span>{movie.title || movie.name}</span>
+              <Link to={`/movies/${movie.id}`}>
+                <span>{movie.title || movie.name}</span>
+              </Link>
             </li>
           ))}
         </ul>
