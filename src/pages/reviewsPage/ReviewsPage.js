@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { Component } from 'react';
+import { getListReviews } from '../../servises/fetchApi';
 
-const ReviewsPage = () => {
+export default class ReviewsPage extends Component {
+  state = {
+    reviews: [],
+  };
+
+  componentDidMount() {
+    const { movieId } = this.props.match.params;
+    getListReviews(movieId).then(reviews => this.setState({ reviews }));
+  }
+
+  render() {
+    const { reviews } = this.state;
     return (
-        <div>
-            <h2>Reviews</h2>
-        </div>
-    )
+      <ul>
+        {reviews.map(review => (
+          <li>
+            <p>Author: {review.author}</p>
+            <p>{review.content}</p>
+          </li>
+        ))}
+      </ul>
+    );
+  }
 }
-
-export default ReviewsPage

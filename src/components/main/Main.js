@@ -12,8 +12,6 @@ const Main = () => {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/movies" component={MoviesPage} />
         <Route path="/movies/:movieId" component={MovieDetailsPage} />
-        {/* <Route path="/movies/:movieId/cast" component={CastPage} />
-        <Route path="/movies/:movieId/reviews" component={ReviewsPage} /> */}
         <Route component={NotFoundPage} />
       </Switch>
     </>
