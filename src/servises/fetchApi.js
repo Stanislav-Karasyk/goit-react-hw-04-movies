@@ -32,10 +32,10 @@ const getListReviews = movieId => {
     .then(({ data }) => data.results);
 };
 
-const searchMovie = () => {
+const searchMovie = (query) => {
     return axios
-      .get(`https://api.themoviedb.org/3/search/movie?api_key=${keyApi}&language=en-US&page=1&include_adult=false`)
-      .then(({ data }) => data);
+      .get(`https://api.themoviedb.org/3/search/movie?api_key=${keyApi}&language=en-US&query=${query}&page=1&include_adult=false`)
+      .then(({ data }) => data.results);
   };
 
 

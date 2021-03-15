@@ -8,24 +8,40 @@ import ReviewsPage from '../../pages/reviewsPage/ReviewsPage';
 export default class MovieDetailsPage extends Component {
   state = {
     movie: {},
+    params: '',
+    query: '',
   };
 
   componentDidMount() {
     const { movieId } = this.props.match.params;
 
-    getMovieDetails(movieId).then(movie => this.setState({ movie }));
+    getMovieDetails(movieId).then(movie =>
+      this.setState({ movie, params: this.props.location.state?.from?.pathname, query: this.props.location.state?.query }),
+    );
   }
 
   handleGoBack = () => {
+    const { history } = this.props;
+    if (this.state.params) {
+      history.push({
+        pathname: this.state.params,
+        search: `query=${this.state.query}`,
+        query: this.state.query,
+      });
 
-  }
+    } else {
+      history.push('/');
+    }
+  };
 
   render() {
     const { movie } = this.state;
 
     return (
       <div>
-        <button type='button' onClick={() => this.props.history.push('/')}>GO BACK</button>
+        <button type="button" onClick={this.handleGoBack}>
+          GO BACK
+        </button>
         {movie.poster_path && (
           <img
             src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
