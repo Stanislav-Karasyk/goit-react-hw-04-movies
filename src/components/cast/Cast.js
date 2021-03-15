@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getListActors } from '../../servises/fetchApi';
 
+
 export default class CastPage extends Component {
   state = {
     actors: [],

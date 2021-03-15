@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { getMovieDetails } from '../../servises/fetchApi';
 import { NavLink } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom';
-import CastPage from '../../pages/castPage/CastPage';
-import ReviewsPage from '../../pages/reviewsPage/ReviewsPage';
+// import CastPage from '../../pages/castPage/CastPage';
+// import ReviewsPage from '../../pages/reviewsPage/ReviewsPage';
+import Cast from '../../components/cast/Cast';
+import Reviews from '../../components/reviews/Reviews';
 
 export default class MovieDetailsPage extends Component {
   state = {
@@ -89,8 +91,8 @@ export default class MovieDetailsPage extends Component {
             </li>
           </ul>
           <Switch>
-            <Route path="/movies/:movieId/cast" component={CastPage} />
-            <Route path="/movies/:movieId/reviews" component={ReviewsPage} />
+            <Route path="/movies/:movieId/cast" component={Cast} />
+            <Route path="/movies/:movieId/reviews" component={Reviews} />
           </Switch>
         </div>
       </div>
